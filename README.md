@@ -596,13 +596,13 @@ Remember: Blueprinting badly bears blunders, beware! (Phrase by [KorkuVeren](htt
 
 ### 目录
 
-> 3.1 编译[Compiling](#bp-compiling)
+> 3.1 [编译(Compiling)](#bp-compiling)
 
-> 3.2 变量[Variables](#bp-vars)
+> 3.2 [变量(Variables)](#bp-vars)
 
-> 3.3 函数[Functions](#bp-functions)
+> 3.3 [函数(Functions)](#bp-functions)
 
-> 3.4 图形节点[Graphs](#bp-graphs)
+> 3.4 [图形节点(Graphs)](#bp-graphs)
 
 <a name="3.1"></a>
 <a name="bp-compiling"></a>
@@ -622,21 +622,21 @@ Remember: Blueprinting badly bears blunders, beware! (Phrase by [KorkuVeren](htt
 
 #### 目录
 
-> 3.2.1 命名[Naming](#bp-vars)
+> 3.2.1 [命名(Naming)](#bp-vars)
 
-> 3.2.2 可编辑行[Editable](#bp-vars-editable)
+> 3.2.2 [可编辑行(Editable)](#bp-vars-editable)
 
-> 3.2.3 分类[Categories](#bp-vars-categories)
+> 3.2.3 [分类(Categories)](#bp-vars-categories)
 
-> 3.2.4 权限[Access](#bp-vars-access)
+> 3.2.4 [权限(Access)](#bp-vars-access)
 
-> 3.2.5 高级[Advanced](#bp-vars-advanced)
+> 3.2.5 [高级(Advanced)](#bp-vars-advanced)
 
-> 3.2.6 临时变量[Transient](#bp-vars-transient)
+> 3.2.6 [临时变量(Transient)](#bp-vars-transient)
 
-> 3.2.7 游戏存档[SaveGame](#bp-vars-savegame)
+> 3.2.7 [游戏存档(SaveGame)](#bp-vars-savegame)
 
-> 3.2.8 配置[Config](#bp-vars-config)
+> 3.2.8 [配置(Config)](#bp-vars-config)
 
 <a name="3.2.1"></a>
 <a name="bp-var-naming"></a>
