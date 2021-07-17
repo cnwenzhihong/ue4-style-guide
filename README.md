@@ -354,6 +354,7 @@
 | ----------------------- | ---------- | ---------- | -------------------------------- |
 | 粒子系统(Particle System)         | PS_        |            |                                  |
 | 后处理材质(Material (Post Process)) | PP_        |            |                                  |
+| Niagara| N_ |	|
 
 <a name="2"></a>
 <a name="structure"></a>
