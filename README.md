@@ -2,18 +2,18 @@
 
 *元焏项目组UE4规范——初稿*
 
-参考文档:
-Airbnb的JS规范 [Airbnb Javascript Style Guide](https://github.com/airbnb/javascript).
-thejinchao翻译的ue4-style-guide[https://github.com/skylens-inc/ue4-style-guide]
-UE4官方代码规范[CodingStandard](https://docs.unrealengine.com/4.26/zh-CN/ProductionPipelines/DevelopmentSetup/CodingStandard/)
-## 重要内容
+<a name="toc"></a>
+## 目录
 
-##### 文件与目录名
->英文翻译标准以[DeepL](https://www.deepl.com/translator)为唯一标准
-
-
+> 1. [资源命名约定](#anc)
+> 1. [目录结构](#structure)
+> 1. [蓝图](#bp)
 
 ## 专业术语
+<a name="terms-Transform"></a>
+##### 文件与目录的英文名
+>英文翻译标准以[DeepL](https://www.deepl.com/translator)为唯一标准
+>他可能不是最好用的翻译软件，但一定是全世界最权威的自动翻译软件
 
 <a name="terms-level-map"></a>
 ##### 关卡/地图(Levels/Maps)
@@ -39,9 +39,9 @@ UE4官方代码规范[CodingStandard](https://docs.unrealengine.com/4.26/zh-CN/P
 '变量'通常用在给函数传递参数，或者用在函数内的局部变量
 当'变量'用在类的内部时，通常是用来定义什么或者用来保存某些数据的。
 
-##### 大小写(Cases)
+##### 命名法(Cases)
 
-对于字母大小写的规范有数种，以下是几种常见的方式，像UE4这样的复杂项目则需要将多种命名法组合使用
+对于命名法有数种，以下是几种常见的方式，像UE4这样的复杂项目则需要将多种命名法组合使用
 
 > ###### 大驼峰命名法(PascalCase)
 >
@@ -55,22 +55,19 @@ UE4官方代码规范[CodingStandard](https://docs.unrealengine.com/4.26/zh-CN/P
 >
 > 单词之间用下划线链接，单词的首字母可以大写也可以小写，例如：`desert_Eagle`, `Style_Guide`, `a_Series_of_Words`
 
+关于命名方式详细介绍:[文件夹命名](#2.1)
 <a name="0"></a>
 ## 0. 原则
-以下原则改编自：
-[idomatic.js代码规范](https://github.com/rwaldron/idiomatic.js/)
-[UE4_Style_Guide](https://github.com/skylens-inc/ue4-style-guide)
-[UE4官方文档代码规范](https://docs.unrealengine.com/4.26/zh-CN/ProductionPipelines/DevelopmentSetup/CodingStandard/)
 <a name="0.1"></a>
 ### 0.1 规范的遵守
-对规范优劣的争论是没有意义的，有规范你就该去遵守。[_Rebecca Murphey_](https://rmurphey.com)
+对规范优劣的争论是没有意义的，有规范你就该去遵守。
 
-规范不仅是用来命名文件的，也是用来快速读懂制作者意思的，需要所有人记住规范(自己需要的部分)并使用，所以不需要有自动生成前缀的软件
+规范不仅是用来命名文件的，也是用来进行快速沟通的，需要所有人记住规范(自己需要的部分)并使用，所以不存在自动生成文件命名规范的软件
 
-项目规范应该是不断进步的，当你发现有好的更改可以适合所有用户时，你应该建议去更改现有规范
+项目规范应该是不断进步的，当你发现有好的更改时，你应该建议去更改现有规范
 
 <a name="0.2"></a>
-### 0.2 不管团队中有多少人，工程中所有的数据结构、资源、代码风格应该统一，如同是同一个人的作品
+### 0.2 工程中所有的数据结构、资源、代码风格应该统一，如同是同一个人的作品
 
 把资源从一个工程迁移到另一个工程不应该产生新的学习成本，所有资源应该符合项目规范，消除不必要的歧义和不确定性
 
@@ -81,14 +78,9 @@ UE4官方代码规范[CodingStandard](https://docs.unrealengine.com/4.26/zh-CN/P
 <a name="0.3"></a>
 ### 0.3 好哥们也得讲原则。
 
-如果你发现周围有同学不遵守规范，你该去纠正他
+如果你发现周围有同学不遵守规范，你需要去纠正他，否则最后遭殃的可能是你自己
 
-<a name="toc"></a>
-## 目录
 
-> 1. [资源命名约定](#anc)
-> 1. [目录结构](#structure)
-> 1. [蓝图](#bp)
 
 <a name="anc"></a>
 <a name="1"></a>
@@ -146,33 +138,33 @@ UE4官方代码规范[CodingStandard](https://docs.unrealengine.com/4.26/zh-CN/P
 
 #### 目录
 
-> 1.2.1 通用类型[Most Common](#anc-common)
+> 1.2.1 [常用类型(Most Common)](#anc-common)
 
-> 1.2.2 动作[Animations](#anc-animations)
+> 1.2.2 [动作(Animations)](#anc-animations)
 
-> 1.2.3 人工智能[Artificial Intelligence](#anc-ai)
+> 1.2.3 [人工智能(Artificial Intelligence)](#anc-ai)
 
-> 1.2.4 蓝图[Blueprints](#anc-bp)
+> 1.2.4 [蓝图(Blueprints)](#anc-bp)
 
-> 1.2.5 材质[Materials](#anc-materials)
+> 1.2.5 [材质(Materials)](#anc-materials)
 
-> 1.2.6 纹理[Textures](#anc-textures)
+> 1.2.6 [纹理(Textures)](#anc-textures)
 
-> 1.2.7 杂项[Miscellaneous](#anc-misc)
+> 1.2.7 [杂项(Miscellaneous)](#anc-misc)
 
-> 1.2.8 Paper2D[Paper 2D](#anc-paper2d)
+> 1.2.8 [Paper2D](#anc-paper2d)
 
-> 1.2.9 物理[Physics](#anc-physics)
+> 1.2.9 [物理(Physics)](#anc-physics)
 
-> 1.2.10 声音[Sound](#anc-sound)
+> 1.2.10 [声音(Sound)](#anc-sound)
 
-> 1.2.11 界面[User Interface](#anc-ui)
+> 1.2.11 [用户界面(User Interface)](#anc-ui)
 
-> 1.2.12 特效[Effects](#anc-effects)
+> 1.2.12 [特效(Effects)](#anc-effects)
 
 <a name="anc-common"></a>
 <a name="1.2.1"></a>
-#### 1.2.1 通用类型 !
+#### 1.2.1 常用类型 !
 
 | 资源类型                | 前缀       | 后缀       | 备注                             |
 | ----------------------- | ---------- | ---------- | -------------------------------- |
@@ -192,6 +184,7 @@ UE4官方代码规范[CodingStandard](https://docs.unrealengine.com/4.26/zh-CN/P
 
 <a name="anc-animations"></a>
 <a name="1.2.2"></a>
+#### 1.2.2 动画
 | 资源类型                | 前缀       | 后缀       | 备注                             |
 | ----------------------- | ---------- | ---------- | -------------------------------- |
 | 瞄准偏移(Aim Offset)              | AO_        |            |                                  |
@@ -208,6 +201,7 @@ UE4官方代码规范[CodingStandard](https://docs.unrealengine.com/4.26/zh-CN/P
 | 骨骼模型(Skeletal Mesh)           | SK_        |            |                                  |
 | 骨骼(Skeleton)                | SKEL_      |            |                                  |
 
+对于一般动画命名之后会讨论
 <a name="anc-ai"></a>
 <a name="1.2.3"></a>
 ### 1.2.3 人工智能(AI) !
@@ -585,9 +579,6 @@ UE4官方代码规范[CodingStandard](https://docs.unrealengine.com/4.26/zh-CN/P
 ## 3. 蓝图 !
 
 这一章会专注于蓝图和蓝图的实现。如果可能的话，本规则和[Epic官方提供的标准](https://docs.unrealengine.com/latest/INT/Programming/Development/CodingStandard)一致。
-
-Remember: Blueprinting badly bears blunders, beware! (Phrase by [KorkuVeren](http://github.com/KorkuVeren))
-(译者: 这句不懂...)
 
 ### 目录
 
@@ -1040,6 +1031,11 @@ This section covers things that apply to all Blueprint graphs.
 
 如果发现白色执行线和其他数据线无法同时对齐，白色执行线的优先级更高。
 
-**[⬆ 回到最顶端](#toc)**
+## 参考文档:
+1.Airbnb的JS规范 [Airbnb Javascript Style Guide](https://github.com/airbnb/javascript)
 
-# };
+1.thejinchao翻译的ue4-style-guide[https://github.com/skylens-inc/ue4-style-guide]
+
+1.UE4官方代码规范[CodingStandard](https://docs.unrealengine.com/4.26/zh-CN/ProductionPipelines/DevelopmentSetup/CodingStandard/)
+
+**[⬆ 回到最顶端](#toc)**
