@@ -1,13 +1,14 @@
-# [Gamemakin](https://gamemak.in) UE4工程规范() {
+# 元焏_UE4工程规范
 
 *元焏项目组UE4规范——初稿*
 
-灵感来源于Airbnb的JS规范 [Airbnb Javascript Style Guide](https://github.com/airbnb/javascript).
-
+参考文档:
+Airbnb的JS规范 [Airbnb Javascript Style Guide](https://github.com/airbnb/javascript).
+thejinchao翻译的ue4-style-guide[https://github.com/skylens-inc/ue4-style-guide]
+UE4官方代码规范[CodingStandard](https://docs.unrealengine.com/4.26/zh-CN/ProductionPipelines/DevelopmentSetup/CodingStandard/)
 ## 重要内容
 
 ##### 文件与目录名
-所有目录与文件名，应统一采用：有英文使用英文，无英文使用中文拼音 的方式
 >英文翻译标准以[DeepL](https://www.deepl.com/translator)为唯一标准
 
 
@@ -15,17 +16,32 @@
 ## 专业术语
 
 <a name="terms-level-map"></a>
-##### Levels/Maps(关卡/地图)
+##### 关卡/地图(Levels/Maps)
 
-“map”(地图)这个词通常也会被称为“level”(关卡)，两者的含义是等同的，在[这里](https://en.wikipedia.org/wiki/Level_(video_gaming))可以查看这个词的发展经历
+“地图(map)”这个词通常也会被称为“关卡(level)”，两者的含义是等同的，在[这里](https://en.wikipedia.org/wiki/Level_(video_gaming))可以查看这个词的发展经历
 
+<a name="terms-texture"></a>
+##### 贴图/纹理(texture)
+无论是”贴图“还是"纹理"指的都是一个东西，英文名都叫做Texture
 <a name="terms-cases"></a>
 
-<a name="terms-cases"></a>
+<a name="terms-var-prop"></a>
+##### 变量/属性(Variables / Properties)
+
+'变量'和'属性'两个词在很多情况下是可以互相通用的。但如果他们同时出现在一个环境时，含义有一些不同：
+<a name="terms-property"></a>
+###### 属性(Property)
+'属性'通常定义在一个类的内部。例如，如果一个类`BP_Barrel`有一个内部成员`bExploded`，那么`bExploded`可以是做是`BP_Barrel`的一个属性
+当'属性'用在类的内部时，通常用来获取已经定义好的数据
+
+<a name="terms-variable"></a>
+###### 变量(Variable)
+'变量'通常用在给函数传递参数，或者用在函数内的局部变量
+当'变量'用在类的内部时，通常是用来定义什么或者用来保存某些数据的。
 
 ##### 大小写(Cases)
 
-对于字母大小写的规范有数种，以下是几种常见的方式
+对于字母大小写的规范有数种，以下是几种常见的方式，像UE4这样的复杂项目则需要将多种命名法组合使用
 
 > ###### 大驼峰命名法(PascalCase)
 >
@@ -39,28 +55,12 @@
 >
 > 单词之间用下划线链接，单词的首字母可以大写也可以小写，例如：`desert_Eagle`, `Style_Guide`, `a_Series_of_Words`
 
-<a name="terms-var-prop"></a>
-##### 变量/属性(Variables / Properties)
-
-'变量'和'属性'两个词在很多情况下是可以互相通用的。但如果他们同时出现在一个环境时，含义有一些不同：
-
-<a name="terms-property"></a>
-###### 属性(Property)
-'属性'通常定义在一个类的内部。例如，如果一个类`BP_Barrel`有一个内部成员`bExploded`，那么`bExploded`可以是做是`BP_Barrel`的一个属性
-
-当'属性'用在类的内部时，通常用来获取已经定义好的数据
-
-<a name="terms-variable"></a>
-###### 变量(Variable)
-'变量'通常用在给函数传递参数，或者用在函数内的局部变量
-
-当'变量'用在类的内部时，通常是用来定义什么或者用来保存某些数据的。
-
 <a name="0"></a>
 ## 0. 原则
-
-以下原则改编自[idomatic.js代码规范](https://github.com/rwaldron/idiomatic.js/)。
-
+以下原则改编自：
+[idomatic.js代码规范](https://github.com/rwaldron/idiomatic.js/)
+[UE4_Style_Guide](https://github.com/skylens-inc/ue4-style-guide)
+[UE4官方文档代码规范](https://docs.unrealengine.com/4.26/zh-CN/ProductionPipelines/DevelopmentSetup/CodingStandard/)
 <a name="0.1"></a>
 ### 0.1 规范的遵守
 对规范优劣的争论是没有意义的，有规范你就该去遵守。[_Rebecca Murphey_](https://rmurphey.com)
@@ -81,7 +81,7 @@
 <a name="0.3"></a>
 ### 0.3 好哥们也得讲原则。
 
-如果你发现同事不遵守规范，你该去纠正他
+如果你发现周围有同学不遵守规范，你该去纠正他
 
 <a name="toc"></a>
 ## 目录
@@ -92,7 +92,7 @@
 
 <a name="anc"></a>
 <a name="1"></a>
-## 1. 资源命名约定 ![#](https://img.shields.io/badge/lint-partial_support-yellow.svg)
+## 1. 资源命名约定 !
 
 对于资源的命名的规范应该像法律一样被遵守。一个项目如果有好的命名规范，那么在资源管理、查找、解析、维护时，都会有极大的便利性。
 
@@ -100,7 +100,7 @@
 
 <a name="base-asset-name"></a>
 <a name="1.1"></a>
-### 1.1 基本命名规则 `Prefix_BaseAssetName_Variant_Suffix` ![#](https://img.shields.io/badge/lint-partial_support-yellow.svg)
+### 1.1 基本命名规则 `Prefix_BaseAssetName_Variant_Suffix` !
 
 时刻记住这个命名规范`Prefix_BaseAssetName_Variant_Suffix`，只要遵守它，大部分情况下都可以让命名规范。下面是详细的解释。
 
@@ -140,7 +140,7 @@
 
 <a name="asset-name-modifiers"></a>
 <a name="1.2"></a>
-### 1.2 资源类型表 ![#](https://img.shields.io/badge/lint-supported-green.svg)
+### 1.2 资源类型表 !
 
 当给一个资源命名的时候，请参照以下表格来决定在[资本资源名](#base-asset-name)前后所使用的前缀和后缀
 
@@ -172,7 +172,7 @@
 
 <a name="anc-common"></a>
 <a name="1.2.1"></a>
-#### 1.2.1 通用类型 ![#](https://img.shields.io/badge/lint-supported-green.svg)
+#### 1.2.1 通用类型 !
 
 | 资源类型                | 前缀       | 后缀       | 备注                             |
 | ----------------------- | ---------- | ---------- | -------------------------------- |
@@ -192,8 +192,6 @@
 
 <a name="anc-animations"></a>
 <a name="1.2.2"></a>
-#### 1.2.2 动画 ![#](https://img.shields.io/badge/lint-supported-green.svg)
-
 | 资源类型                | 前缀       | 后缀       | 备注                             |
 | ----------------------- | ---------- | ---------- | -------------------------------- |
 | 瞄准偏移(Aim Offset)              | AO_        |            |                                  |
@@ -212,7 +210,7 @@
 
 <a name="anc-ai"></a>
 <a name="1.2.3"></a>
-### 1.2.3 人工智能(AI) ![#](https://img.shields.io/badge/lint-supported-green.svg)
+### 1.2.3 人工智能(AI) !
 
 | 资源类型                | 前缀       | 后缀       | 备注                             |
 | ----------------------- | ---------- | ---------- | -------------------------------- |
@@ -225,7 +223,7 @@
 
 <a name="anc-bp"></a>
 <a name="1.2.4"></a>
-### 1.2.4 蓝图 ![#](https://img.shields.io/badge/lint-supported-green.svg)
+### 1.2.4 蓝图 !
 
 | 资源类型                | 前缀       | 后缀       | 备注                             |
 | ----------------------- | ---------- | ---------- | -------------------------------- |
@@ -240,7 +238,7 @@
 
 <a name="anc-materials"></a>
 <a name="1.2.5"></a>
-### 1.2.5 材质 ![#](https://img.shields.io/badge/lint-supported-green.svg)
+### 1.2.5 材质 !
 
 | 资源类型                | 前缀       | 后缀       | 备注                             |
 | ----------------------- | ---------- | ---------- | -------------------------------- |
@@ -254,7 +252,7 @@
 
 <a name="anc-textures"></a>
 <a name="1.2.6"></a>
-### 1.2.6 贴图/纹理(Texture) ![#](https://img.shields.io/badge/lint-supported-green.svg)
+### 1.2.6 贴图/纹理(Texture) !
 > 以下内容默认 贴图=纹理 蒙版=遮罩，仅仅是不同地方叫法不同，推荐使用贴图、遮罩描述
 
 | 资源类型                | 前缀       | 后缀       | 备注                             |
@@ -278,7 +276,7 @@
 
 <a name="anc-textures-packing"</a>
 <a name="1.2.6.1"></a>
-#### 1.2.6.1 贴图合并 ![#](https://img.shields.io/badge/lint-unsupported-red.svg)
+#### 1.2.6.1 贴图合并 !
 把多张贴图存于一个贴图文件中是很常见的方法，比如通常可以把自发光(Emissive), 粗糙度(Roughness), 环境光(Ambient Occlusion)以RGB通道的形式保存在贴图中，然后在文件的后缀中，注明这些信息，例如`_EGO`
 
 > 一般来说，在纹理的Diffuse信息中附带Alpha/Opacity信息是很常见的，这时在`_D`后缀中加入`A`
@@ -287,7 +285,7 @@
 
 <a name="anc-misc"></a>
 <a name="1.2.7"></a>
-### 1.2.7 杂项 ![#](https://img.shields.io/badge/lint-supported-green.svg)
+### 1.2.7 杂项 !
 
 | 资源类型                | 前缀       | 后缀       | 备注                             |
 | ----------------------- | ---------- | ---------- | -------------------------------- |
@@ -308,7 +306,7 @@
 
 <a name="anc-paper2d"></a>
 <a name="1.2.8"></a>
-### 1.2.8 2D ![#](https://img.shields.io/badge/lint-supported-green.svg)
+### 1.2.8 2D !
 
 | 资源类型                | 前缀       | 后缀       | 备注                             |
 | ----------------------- | ---------- | ---------- | -------------------------------- |
@@ -320,8 +318,7 @@
 
 <a name="anc-physics"></a>
 <a name="1.2.9"></a>
-### 1.2.9 物理 ![#](https://img.shields.io/badge/lint-supported-green.svg)
-
+### 1.2.9 物理 !
 | 资源类型                | 前缀       | 后缀       | 备注                             |
 | ----------------------- | ---------- | ---------- | -------------------------------- |
 | 物理材质(Physical Material)       | PM_        |            |                                  |
@@ -330,8 +327,7 @@
 
 <a name="anc-sounds"></a>
 <a name="1.2.10"></a>
-### 1.2.10 音效 ![#](https://img.shields.io/badge/lint-supported-green.svg)
-
+### 1.2.10 音效 !
 | 资源类型                | 前缀       | 后缀       | 备注                             |
 | ----------------------- | ---------- | ---------- | -------------------------------- |
 | 对话音效(Dialogue Voice)          | DV_        |            |                                  |
@@ -347,7 +343,7 @@
 
 <a name="anc-ui"></a>
 <a name="1.2.11"></a>
-### 1.2.11 用户界面/UI ![#](https://img.shields.io/badge/lint-supported-green.svg)
+### 1.2.11 用户界面/UI !
 
 | 资源类型                | 前缀       | 后缀       | 备注                             |
 | ----------------------- | ---------- | ---------- | -------------------------------- |
@@ -358,7 +354,7 @@
 
 <a name="anc-effects"></a>
 <a name="1.2.12"></a>
-### 1.2.12 粒子效果FX(Effects) ![#](https://img.shields.io/badge/lint-supported-green.svg)
+### 1.2.12 粒子效果FX(Effects) !
 
 | Asset Type              | Prefix     | Suffix     | Notes                            |
 | ----------------------- | ---------- | ---------- | -------------------------------- |
@@ -367,7 +363,7 @@
 
 <a name="2"></a>
 <a name="structure"></a>
-## 2. 目录结构 ![#](https://img.shields.io/badge/lint-partial_support-yellow.svg)
+## 2. 目录结构 !
 
 对资源目录的规范管理和资源文件同等重要，都应该像法律一样被严格遵守。不规范的目录结构会导致严重的混乱。
 
@@ -451,12 +447,12 @@
 
 <a name="2.1"></a>
 <a name="structure-folder-names"><a>
-### 2.1 文件夹命名 ![#](https://img.shields.io/badge/lint-partial_support-yellow.svg)
+### 2.1 文件夹命名 !
 
 关于文件夹的命名，有一些通用的规范
 
 <a name="2.1.1"></a>
-#### 2.1.1 使用大驼峰命名法(PascalCase)大小写规范[<sup>*</sup>](#terms-cases) ![#](https://img.shields.io/badge/lint-supported-green.svg)
+#### 2.1.1 使用大驼峰命名法(PascalCase)大小写规范[<sup>*</sup>](#terms-cases) !
 
 文件夹的命名需要遵守大驼峰命名法规范，也就是所有单词的首字母大写，并且中间没有任何连接符。例如`DesertEagle`, `RocketPistol`, and `ASeriesOfWords`.
 
@@ -464,13 +460,13 @@
 
 
 <a name="2.1.2"></a>
-#### 2.1.3 不要使用包括中文、空格在内的奇怪的符号 ![#](https://img.shields.io/badge/lint-supported-green.svg)
+#### 2.1.3 不要使用包括中文、空格在内的奇怪的符号 !
 	永远永远永远在目录名中只使用`a-z`大小写 `0-9`这两类安全的字符，
 	如果你使用了类似于`元`,`焏`,`@`, `-`, `_`, `,`, `*`, 或者 `#`这样的字符，难免会碰到一些操作系统、源码管理工具或者一些弱智的工具不支持。
 	同样，也不要把本地工程放在包含有其他符号的目录下面，应该放在类似于`D:\Project`这样的目录里，而不是`C:\Users\My Name\My Documents\Unreal_Projects\元焏`这样的目录。
 <a name="2.2"></a>
 <a name="structure-top-level"><a>
-### 2.2 使用一个顶级目录来保存所有工程资源 ![#](https://img.shields.io/badge/lint-supported-green.svg)
+### 2.2 使用一个顶级目录来保存所有工程资源 !
 
 所有的工程资源都应该保存在一个以工程名命名的目录中。例如工程叫做'YuanQi'，那么所有该工程的资源都应该保存在`Content/YuanQi`目录中。
 
@@ -510,8 +506,7 @@
 
 <a name="2.3"></a>
 <a name="structure-developers"></a>
-### 2.3 用来做临时测试的开发者目录 ![#](https://img.shields.io/badge/lint-unsupported-red.svg)
-
+### 2.3 用来做临时测试的开发者目录 !
 在一个项目的开发期间，团队成员经常会有一个'沙箱'目录用来做测试而不会影响到工程本身。因为工作是连续的，所以即使这些'沙箱'目录也需要进行源码版本控制。但并不是所有成员都需要这种开发者目录的，但使用开发者目录的成员来说，一旦这些目录是在服务器上管理的，总会需要一些麻烦事。
 
 首先团队成员极容易使用这些尚未准备好的资源，这些资源一旦被删除就会引发问题。例如一个做模型的美术正在调整一个模型资源，这时一个做场景编辑的美术如果在场景中使用了这个模型，那么很可能会导致莫名其妙的问题，进而造成大量的工作浪费。
@@ -522,7 +517,7 @@
 
 <a name="2.4"></a>
 <a name="structure-maps"></a>
-### 2.4 所有的地图[<sup>*</sup>](#terms-level-map)文件应该保存在'Maps'的目录中 ![#](https://img.shields.io/badge/lint-supported-green.svg)
+### 2.4 所有的地图[<sup>*</sup>](#terms-level-map)文件应该保存在'Maps'的目录中 !
 
 无论如何你都应该把所有地图保存在`/Content/YuanQi/Maps`中
 
@@ -532,7 +527,7 @@
 
 <a name="2.5"></a>
 <a name="structure-core"></a>
-### 2.5 使用`Core`目录存储系统蓝图资源以及其他系统资源 ![#](https://img.shields.io/badge/lint-unsupported-red.svg)
+### 2.5 使用`Core`目录存储系统蓝图资源以及其他系统资源 !
 
 使用`/Content/Project/Core`这个目录用来保存一个工程中最为核心的资源。
 例如，游戏模式(GameMode), 角色(Character), 玩家控制器(PlayerController), 游戏状态(GameState), 玩家状态(PlayerState)，以及如此相关的一些资源也应该放在这里。
@@ -543,15 +538,15 @@
 
 <a name="2.6"></a>
 <a name="structure-assettypes"></a>
-### 2.6 不要创建名为`Assets` 或者 `AssetTypes`的目录 ![#](https://img.shields.io/badge/lint-supported-green.svg)
+### 2.6 不要创建名为`Assets` 或者 `AssetTypes`的目录 !
 
 <a name="2.6.1"></a>
-#### 2.6.1 创建一个名为`Assets`的目录是多余的。 ![#](https://img.shields.io/badge/lint-supported-green.svg)
+#### 2.6.1 创建一个名为`Assets`的目录是多余的。 !
 
 因为本来所有目录就是用来保存资源的
 
 <a name="2.6.2"></a>
-#### 2.6.2 创建名为`Meshes`、 `Textures`或者`Materials`的目录是多余的。 ![#](https://img.shields.io/badge/lint-supported-green.svg)
+#### 2.6.2 创建名为`Meshes`、 `Textures`或者`Materials`的目录是多余的。 !
 
 资源的文件名本身已经提供了资源类型信息，所以在目录名中再提供资源类型信息就是多余了，而且使用资源浏览器的过滤功能，可以非常便利的提供相同的功能。
 
@@ -563,7 +558,7 @@
 
 <a name="2.7"></a>
 <a name="structure-large-sets"></a>
-### 2.7 对于动画和声音资源应该有自己的目录结构 ![#](https://img.shields.io/badge/lint-unsupported-red.svg)
+### 2.7 对于动画和声音资源应该有自己的目录结构 !
 
 这节可以视为针对[2.6](#2.6)的补充
 
@@ -573,7 +568,7 @@
 
 <a name="2.8"></a>
 <a name="structure-material-library"></a>
-### 2.8 材质库`MaterialLibrary` ![#](https://img.shields.io/badge/lint-unsupported-red.svg)
+### 2.8 材质库`MaterialLibrary` !
 
 如果你的工程中使用了任何基础材质、分层材质，或者任何被重复使用而不属于特定模型的材质和纹理，这些资源应该放在材质库目录`Content/Project/MaterialLibrary`。
 
@@ -587,7 +582,7 @@
 
 <a name="3"></a>
 <a name="bp"></a>
-## 3. 蓝图 ![#](https://img.shields.io/badge/lint-partial_support-yellow.svg)
+## 3. 蓝图 !
 
 这一章会专注于蓝图和蓝图的实现。如果可能的话，本规则和[Epic官方提供的标准](https://docs.unrealengine.com/latest/INT/Programming/Development/CodingStandard)一致。
 
@@ -606,7 +601,7 @@ Remember: Blueprinting badly bears blunders, beware! (Phrase by [KorkuVeren](htt
 
 <a name="3.1"></a>
 <a name="bp-compiling"></a>
-### 3.1 编译 ![#](https://img.shields.io/badge/lint-supported-green.svg)
+### 3.1 编译 !
 
 需要保证所有蓝图在编译时0警告和0错误。应该尽快修复所有警告和异常，以免它们造成可怕的麻烦。
 
@@ -616,7 +611,7 @@ Remember: Blueprinting badly bears blunders, beware! (Phrase by [KorkuVeren](htt
 
 <a name="3.2"></a>
 <a name="bp-vars"></a>
-### 3.2 变量 ![#](https://img.shields.io/badge/lint-partial_support-yellow.svg)
+### 3.2 变量 !
 
 变量(`variable`)和属性(`property`)这两个词经常是可以互换的。
 
@@ -640,17 +635,17 @@ Remember: Blueprinting badly bears blunders, beware! (Phrase by [KorkuVeren](htt
 
 <a name="3.2.1"></a>
 <a name="bp-var-naming"></a>
-#### 3.2.1 命名规范 ![#](https://img.shields.io/badge/lint-partial_support-yellow.svg)
+#### 3.2.1 命名规范 !
 
 <a name="3.2.1.1"></a>
 <a name="bp-var-naming-nouns"></a>
-##### 3.2.1.1 使用名词 ![#](https://img.shields.io/badge/lint-unsupported-red.svg)
+##### 3.2.1.1 使用名词 !
 
 所有非布尔类型的变量必须使用简短、清晰并且意义明确的名词作为变量名。
 
 <a name="3.2.1.2"></a>
 <a name="bp-var-naming-case"></a>
-##### 3.2.1.2 大驼峰命名法(PascalCase) ![#](https://img.shields.io/badge/lint-supported-green.svg)
+##### 3.2.1.2 大驼峰命名法(PascalCase) !
 
 所有非布尔类型的变量的大小写需要遵守[大驼峰命名法(PascalCase)](#terms-cases)规则。
 
@@ -666,7 +661,7 @@ Remember: Blueprinting badly bears blunders, beware! (Phrase by [KorkuVeren](htt
 
 <a name="3.2.1.3"></a>
 <a name="bp-var-bool-prefix"></a>
-##### 3.2.1.3 布尔变量需要前缀 `b`  ![#](https://img.shields.io/badge/lint-supported-green.svg)
+##### 3.2.1.3 布尔变量需要前缀 `b`  !
 
 所有布尔类型变量需要遵守[大驼峰命名法(PascalCase)](#terms-cases)规则，但前面需要增加小写的`b`做前缀。
 
@@ -676,11 +671,10 @@ UE4的蓝图编辑器在显示变量名称时，会自动把前缀`b`去掉
 
 <a name="3.2.1.4"></a>
 <a name="bp-var-bool-names"></a>
-##### 3.2.1.4 布尔类型变量命名规则 ![#](https://img.shields.io/badge/lint-partial_support-yellow.svg)
+##### 3.2.1.4 布尔类型变量命名规则 !
 
 <a name="3.2.1.4.1"></a>
-###### 3.2.1.4.1 一般的独立信息 ![#](https://img.shields.io/badge/lint-supported-green.svg)
-
+###### 3.2.1.4.1 一般的独立信息 !
 布尔类型变量如果用来表示一般的信息，名字应该使用描述性的单词，不要包含具有提问含义的词汇，比如`Is`，这个词是保留单词。
 
 例如：使用`bDead` and `bHostile`，**不要**使用`bIsDead` and `bIsHostile`。
@@ -688,8 +682,7 @@ UE4的蓝图编辑器在显示变量名称时，会自动把前缀`b`去掉
 也不要使用类似于`bRunning`这样的动词，动词会让含义变得复杂
 
 <a name="3.2.1.4.2"></a>
-###### 3.2.1.4.2 复杂状态 ![#](https://img.shields.io/badge/lint-unsupported-red.svg)
-
+###### 3.2.1.4.2 复杂状态 !
 不要使用布尔变量保存复杂的，或者需要依赖其他属性的状态信息，这会让状态变得复杂和难以理解，如果需要尽量使用枚举来代替。
 
 例如：当定义一个武器时，**不要**使用`bReloading` 和 `bEquipping`这样的变量，因为一把武器不可能即在reloading状态又在equipping状态，所以应该使用定义一个叫做`EWeaponState`的枚举，然后用一个枚举变量`WeaponState`来代替，这也使得以后增加新的状态更加容易。
@@ -698,7 +691,7 @@ UE4的蓝图编辑器在显示变量名称时，会自动把前缀`b`去掉
 
 <a name="3.2.1.5"></a>
 <a name="bp-vars-naming-context"></a>
-##### 3.2.1.5 考虑上下文 ![#](https://img.shields.io/badge/lint-unsupported-red.svg)
+##### 3.2.1.5 考虑上下文 !
 
 蓝图中的变量命名时需要考虑上下文环境，避免重复不必要的定义。
 
@@ -729,8 +722,7 @@ UE4的蓝图编辑器在显示变量名称时，会自动把前缀`b`去掉
 
 <a name="3.2.1.6"></a>
 <a name="bp-vars-naming-atomic"></a>
-##### 3.2.1.6 **不要**在变量中包含原生变量类型名 ![#](https://img.shields.io/badge/lint-supported-green.svg)
-
+##### 3.2.1.6 **不要**在变量中包含原生变量类型名 !
 所谓原生变量是指那些最简单的保存数据的变量类型，比如布尔类型、整数、浮点数以及枚举。
 
 字符串(String)和数组(vectors)在蓝图中也属于原生变量类型，但严格来讲它们其实不是。
@@ -749,8 +741,7 @@ UE4的蓝图编辑器在显示变量名称时，会自动把前缀`b`去掉
 
 <a name="3.2.1.7"></a>
 <a name="bp-vars-naming-complex"></a>
-##### 3.2.1.7 非原生类型的变量，需要包含变量类型名 ![#](https://img.shields.io/badge/lint-unsupported-red.svg)
-
+##### 3.2.1.7 非原生类型的变量，需要包含变量类型名 !
 非原生类型的变量是指那些通过数据结构保存一批原生类型的复杂变量类型，比如结构体(Structs)、类(Classes)、接口(Interface)，还有一些有类似行为的原生变量比如`文字(Text)` 和 `名字(Name)`也属于此列。
 
 > 如果仅仅是原生变量组成的数组，那么这个数组仍然属于原生类型
@@ -768,7 +759,7 @@ UE4的蓝图编辑器在显示变量名称时，会自动把前缀`b`去掉
 
 <a name="3.2.1.8"></a>
 <a name="bp-vars-naming-arrays"></a>
-##### 3.2.1.8 数组 ![#](https://img.shields.io/badge/lint-partial_support-yellow.svg)
+##### 3.2.1.8 数组 !
 
 数组的命名规则通常和所包含的元素的规则一样，但注意要用复数。
 
@@ -776,7 +767,7 @@ UE4的蓝图编辑器在显示变量名称时，会自动把前缀`b`去掉
 
 <a name="3.2.2"></a>
 <a name="bp-vars-editable"></a>
-#### 3.2.2 可编辑变量 ![#](https://img.shields.io/badge/lint-partial_support-yellow.svg)
+#### 3.2.2 可编辑变量 !
 
 所有可以安全的更改数据内容的变量都需要被标记为`Editable`
 
@@ -786,13 +777,13 @@ UE4的蓝图编辑器在显示变量名称时，会自动把前缀`b`去掉
 
 <a name="3.2.2.1"></a>
 <a name="bp-vars-editable-tooltips"></a>
-##### 3.2.2.1 Tooltips ![#](https://img.shields.io/badge/lint-unsupported-red.svg)
+##### 3.2.2.1 Tooltips !
 
 对于所有标记为`Editable`的变量，包括被标记为 `Expose On Spawn`的变量，都应该在其`Tooltip`内填写关于如何改变变量值，以及会产生何种效果的说明。
 
 <a name="3.2.2.2"></a>
 <a name="bp-vars-editable-ranges"></a>
-##### 3.2.2.2 滑动条(Slider)以及取值范围 ![#](https://img.shields.io/badge/lint-unsupported-red.svg)
+##### 3.2.2.2 滑动条(Slider)以及取值范围 !
 
 对于可编辑的变量，如果不适合直接输入具体数值，那么应该通过一个滑动条(Slider)并且加上取值范围来让设计师输入。
 
@@ -804,7 +795,7 @@ UE4的蓝图编辑器在显示变量名称时，会自动把前缀`b`去掉
 
 <a name="3.2.3"></a>
 <a name="bp-vars-categories"></a>
-#### 3.2.3 分类 ![#](https://img.shields.io/badge/lint-supported-green.svg)
+#### 3.2.3 分类 !
 
 如果一个类的变量很少，那么没有必要使用分类
 
@@ -828,8 +819,7 @@ UE4的蓝图编辑器在显示变量名称时，会自动把前缀`b`去掉
 
 <a name="3.2.4"></a>
 <a name="bp-vars-access"></a>
-#### 3.2.4 变量的访问权限 ![#](https://img.shields.io/badge/lint-unsupported-red.svg)
-
+#### 3.2.4 变量的访问权限 !
 在C++中，变量的访问类型由类成员的属性决定，Public类型的表示其他类都可以访问，Protetced类型的成员表示子类可以访问，Private类型变量表示只有类内部函数可以访问此变量。
 
 蓝图并没有类似的权限访问设计。
@@ -838,13 +828,13 @@ UE4的蓝图编辑器在显示变量名称时，会自动把前缀`b`去掉
 
 <a name="3.2.4.1"></a>
 <a name="bp-vars-access-private"></a>
-##### 3.2.4.1 私有变量 ![#](https://img.shields.io/badge/lint-unsupported-red.svg)
+##### 3.2.4.1 私有变量 !
 
 尽量不要把变量生命为private类型，除非变量一开始就打算永远被类内部访问，并且类本身也没打算被继承。尽量用`protected`，private类型用在当你有非常清楚的理由要去限制子类的能力。
 
 <a name="3.2.5"></a>
 <a name="bp-vars-advanced"></a>
-#### 3.2.5 高级显示 ![#](https://img.shields.io/badge/lint-unsupported-red.svg)
+#### 3.2.5 高级显示 !
 
 如果一个变量可以被编辑，但通常不会有人碰到，那么就把它标记为高级显示`Advanced Display`。这些变量在蓝图中会缺省隐藏，除非点击节点上的高级显示箭头。
 
@@ -852,7 +842,7 @@ UE4的蓝图编辑器在显示变量名称时，会自动把前缀`b`去掉
 
 <a name="3.2.6"></a>
 <a name="bp-vars-transient"></a>
-#### 3.2.6 Transient 变量 ![#](https://img.shields.io/badge/lint-unsupported-red.svg)
+#### 3.2.6 Transient 变量 !
 
 Transient类型的变量是指那些不需要被序列化（保存或者加载），并且初始值为0或者null的变量。一般用在引用其他对象，它们的值只有在运行时才知道。这样做能防止编辑器在磁盘上多存储一份多余的数据，以加快蓝图的存盘和加载速度。
 
@@ -860,19 +850,19 @@ Transient类型的变量是指那些不需要被序列化（保存或者加载�
 
 <a name="3.2.7"></a>
 <a name="bp-vars-savegame"></a>
-#### 3.2.7 SaveGame变量 ![#](https://img.shields.io/badge/lint-supported-green.svg)
+#### 3.2.7 SaveGame变量 !
 
 绝对**不要**将`SaveGame` 和 `Transient`同时使用，这是明显不合理的。
 
 <a name="3.2.8"></a>
 <a name="bp-vars-config"></a>
-#### 3.2.8 Config变量 ![#](https://img.shields.io/badge/lint-supported-green.svg)
+#### 3.2.8 Config变量 !
 
 不要使用`Config Variable`这个标记，这会让设计师在控制蓝图行为上更加困难。这个标记一般用在C++中，用来标记那些极少被改变的变量，你可以认为它们是那些被标上`Advanced Display`的变量
 
 <a name="3.3"></a>
 <a name="bp-functions"></a>
-### 3.3 函数、事件以及事件分发器 ![#](https://img.shields.io/badge/lint-unsupported-red.svg)
+### 3.3 函数、事件以及事件分发器 !
 
 这一节用来解释应该如何管理函数、事件以及事件分发器。除非特殊说明，所有适用于函数的规则，同样适用于事件。
 
