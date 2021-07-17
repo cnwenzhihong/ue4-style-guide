@@ -432,21 +432,21 @@
 
 ### 目录
 
-> 2.1 文件夹命名[Folder Names](#structure-folder-names)
+> 2.1 [文件夹命名(Folder Names)](#structure-folder-names)
 
-> 2.2 顶层目录[Top-Level Folders](#structure-top-level)
+> 2.2 [顶层目录(Top-Level Folders)](#structure-top-level)
 
-> 2.3 开发者目录[Developer Folders](#structure-developers)
+> 2.3 [开发者目录(Developer Folders)](#structure-developers)
 
-> 2.4 地图目录[Maps](#structure-maps)
+> 2.4 [地图目录(Maps)](#structure-maps)
 
-> 2.5 核心资源[Core](#structure-core)
+> 2.5 [核心资源(Core)](#structure-core)
 
 > 2.6 [避免以`Assets` 或 `AssetTypes`命名](#structure-assettypes)
 
-> 2.7 超大资源[Large Sets](#structure-large-sets)
+> 2.7 [超大资源(Large Sets)](#structure-large-sets)
 
-> 2.8 材质库[Material Library](#structure-material-library)
+> 2.8 [材质库(Material Library)](#structure-material-library)
 
 
 <a name="2.1"></a>
@@ -462,23 +462,19 @@
 
 参照[大小写规范](#terms-cases).
 
+
 <a name="2.1.2"></a>
-#### 2.1.2 不要使用空格 ![#](https://img.shields.io/badge/lint-supported-green.svg)
-
-作为对[2.1.1](#2.1.1)的补充，绝对不要在目录名中使用空格。空格会导致引擎以及其他命令行工具出现错误，同样，也不要把你的工程放在包含有空格的目录下面，应该放在类似于`D:\Project`这样的目录里，而不是`C:\Users\My Name\My Documents\Unreal Projects`这样的目录。
-
-<a name="2.1.3"></a>
-#### 2.1.3 不要使用奇怪的符号 ![#](https://img.shields.io/badge/lint-supported-green.svg)
-	
-	永远永远永远在目录名中只使用`a-z`, `A-Z`, 和 `0-9`这些安全的字符，如果你使用了类似于`@`, `-`, `_`, `,`, `*`, 或者 `#`这样的字符，难免会碰到一些操作系统、源码管理工具或者一些弱智的工具不支持。
-
+#### 2.1.3 不要使用包括中文、空格在内的奇怪的符号 ![#](https://img.shields.io/badge/lint-supported-green.svg)
+	永远永远永远在目录名中只使用`a-z`大小写 `0-9`这两类安全的字符，
+	如果你使用了类似于`元`,`焏`,`@`, `-`, `_`, `,`, `*`, 或者 `#`这样的字符，难免会碰到一些操作系统、源码管理工具或者一些弱智的工具不支持。
+	同样，也不要把本地工程放在包含有其他符号的目录下面，应该放在类似于`D:\Project`这样的目录里，而不是`C:\Users\My Name\My Documents\Unreal_Projects\元焏`这样的目录。
 <a name="2.2"></a>
 <a name="structure-top-level"><a>
 ### 2.2 使用一个顶级目录来保存所有工程资源 ![#](https://img.shields.io/badge/lint-supported-green.svg)
 
 所有的工程资源都应该保存在一个以工程名命名的目录中。例如工程叫做'YuanQi'，那么所有该工程的资源都应该保存在`Content/YuanQi`目录中。
 
-> 开发者目录`Developers`不用受此限制，因为开发者资源是跨工程使用的，参照下面的[开发者目录](#2.3)中的详细说明。
+> 开发者目录`Developers`不用受此限制，参照下面的[开发者目录](#2.3)中的详细说明。
 
 使用顶级目录的原因有如下。
 
@@ -503,25 +499,24 @@
 <a name="2.2.3"></a>
 #### 2.2.3 范例，模板以及商场中的资源都是安全没有风险的
 
-正如上面[2.2.2](#2.2.2)所讲，如果你想把官方范例、模板以及商城中购买的资源放到自己的工程中，那么这些资源都是可以保证不会干扰现有工程的，除非你购买的资源工程和你的工程同名。
+正如[2.2.2](#2.2.2)所讲，如果你想把官方范例、模板以及商城中购买的资源放到自己的工程中，那么这些资源都是可以保证不会干扰现有工程的，除非你购买的资源工程和你的工程同名。
 
-当然也不能完全信任商城上的资源能够完全遵守[顶级目录规则](#2.2)。的确有一些商城资源，尽管大部分资源放在了顶级目录下面，但仍然留下了部分资源污染了`Content`目录
+当然也不能完全信任商城上的资源能够完全遵守[顶级目录规则](#2.2)。
 
-如果坚持这个原则[2.2](#2.2)，最糟糕的情况就是购买了两个不同的商场资源，结果发现他们使用了相同的EPIC的示例资源。但只要你坚持把自己的资源放在自己的工程目录中，并且把使用的EPIC示例资源也放在自己的目录中，那么自己工程也不会受到影响。
 
 #### 2.2.4 容易维护DLC、子工程、以及补丁包
 
-如果工程打算开发DLC或者子工程，那么这些子工程所需要的资源应该迁移出来放在另一个顶级目录中，这样的结构使得编译这些版本时可以区别对待子工程中的资源。子工程中的资源的迁入和迁出代价也更小。如果想在子项目中修改一些原有工程中的资源，那么可以把这些资源迁移到子工程目录中，这样不会破坏原有工程。
+如果工程开发DLC或者子工程，那么这些子工程所需要的资源应该迁移出来放在另一个顶级目录中，这样的结构使得编译这些版本时可以区别对待子工程中的资源。子工程中的资源的迁入和迁出代价也更小。如果想在子项目中修改一些原有工程中的资源，那么可以把这些资源迁移到子工程目录中，这样不会破坏原有工程。
 
 <a name="2.3"></a>
 <a name="structure-developers"></a>
 ### 2.3 用来做临时测试的开发者目录 ![#](https://img.shields.io/badge/lint-unsupported-red.svg)
 
-在一个项目的开发期间，团队成员经常会有一个'沙箱'目录用来做测试而不会影响到工程本身。因为工作是连续的，所以即使这些'沙箱'目录也需要上传到源码服务器上保存。但并不是所有团队成员都需要这种开发者目录的，但使用开发者目录的成员来说，一旦这些目录是在服务器上管理的，总会需要一些麻烦事。
+在一个项目的开发期间，团队成员经常会有一个'沙箱'目录用来做测试而不会影响到工程本身。因为工作是连续的，所以即使这些'沙箱'目录也需要进行源码版本控制。但并不是所有成员都需要这种开发者目录的，但使用开发者目录的成员来说，一旦这些目录是在服务器上管理的，总会需要一些麻烦事。
 
 首先团队成员极容易使用这些尚未准备好的资源，这些资源一旦被删除就会引发问题。例如一个做模型的美术正在调整一个模型资源，这时一个做场景编辑的美术如果在场景中使用了这个模型，那么很可能会导致莫名其妙的问题，进而造成大量的工作浪费。
 
-但如果这些模型放在开发者目录中，那么场景美术人员就没有任何理由使用这些资源。资源浏览器的缺省设置会自动过滤掉这个目录，从而保证正常情况下不可能出现被误用的情况。
+但如果这些模型放在开发者目录中，那么场景美术人员就没有任何理由使用这些资源。UE4资源浏览器的默认设置会自动过滤掉这个目录，从而保证正常情况下不可能出现被误用的情况。
 
 一旦这些资源真正准备好，那么美术人员应该把它们移到正式的工程目录中并修复引用关系，这实际上是让资源从实验阶段'推进'到了生产阶段。
 
@@ -539,11 +534,12 @@
 <a name="structure-core"></a>
 ### 2.5 使用`Core`目录存储系统蓝图资源以及其他系统资源 ![#](https://img.shields.io/badge/lint-unsupported-red.svg)
 
-使用`/Content/Project/Core`这个目录用来保存一个工程中最为核心的资源。例如，非常基础的游戏模式(GameMode), 角色(Character), 玩家控制器(PlayerController), 游戏状态(GameState), 玩家状态(PlayerState)，以及如此相关的一些资源也应该放在这里。
+使用`/Content/Project/Core`这个目录用来保存一个工程中最为核心的资源。
+例如，游戏模式(GameMode), 角色(Character), 玩家控制器(PlayerController), 游戏状态(GameState), 玩家状态(PlayerState)，以及如此相关的一些资源也应该放在这里。
 
-这个目录非常明显的告诉其他团队成员:"不要碰我！"。非引擎程序员很少有理由去碰这个目录，如果工程目录结构合理，那么游戏设计师只需要使用子类提供的功能就可以工作，负责场景编辑的员工只需要使用专用的的蓝图就可以，而不用碰到这些基础类。
+非程序员不要去碰这个目录，策划也只需要使用子类提供的功能就可以工作，负责场景编辑的员工只需要使用专用的的蓝图就可以，而不用碰到这些基础类。
 
-例如，如果项目需要设计一种可以放置在场景中并且可以被捡起的物体，那么应该首先设计一个具有被捡起功能的基类放在`Core/Pickups`目录中，而各种具体的可以被捡起的物体诸如药瓶、子弹这样的物体，应该放在`/Content/Project/Placeables/Pickups/`这样的目录中。游戏设计师可以在这些目录中定义和设计这些物体，所以他们不应该去碰`Core/Pickups`目录下的代码，要不然可能无意中破坏工程中的其他功能
+例如，如果项目需要设计一种可以放置在场景中并且可以被捡起的物体，那么应该首先设计一个具有被捡起功能的基类放在`Core/Pickups`目录中，而各种具体的可以被捡起的物体诸如药瓶、子弹这样的物体，应该放在`/Content/Project/Placeables/Pickups/`这样的目录中。游戏设计师可以在这些目录中定义和设计这些物体，所以其他人不需要也不应该去碰`Core/Pickups`目录下的代码，要不然可能无意中破坏工程中的其他功能
 
 <a name="2.6"></a>
 <a name="structure-assettypes"></a>
@@ -567,15 +563,13 @@
 
 <a name="2.7"></a>
 <a name="structure-large-sets"></a>
-### 2.7 超大资源要有自己的目录结构 ![#](https://img.shields.io/badge/lint-unsupported-red.svg)
+### 2.7 对于动画和声音资源应该有自己的目录结构 ![#](https://img.shields.io/badge/lint-unsupported-red.svg)
 
 这节可以视为针对[2.6](#2.6)的补充
 
-有一些资源类型通常文件数量巨大，而且每个作用都不同。典型的例子是动画资源和声音资源。如果你发现有15个以上的资源属于同一个逻辑类型，那么它们应该被放在一起。
+对于动画资源和声音资源这一欸数量巨大，而且每个作用都不同的资源。如果你发现有15个以上的资源属于同一个逻辑类型，那么它们应该被放在一起。
 
 举例来说，角色共用的动画资源应该放在`Characters/Common/Animations`目录中，并且其中应该还有诸如`Locomotion` 或者`Cinematic`的子目录
-
-> 这并不适用与纹理和材质。比如`Rocks`目录通常会包含数量非常多的纹理，但每个纹理都都是属于特定的石头的，它们应该被正确命名就足够了。即使这些纹理属于[材质库](#2.8)
 
 <a name="2.8"></a>
 <a name="structure-material-library"></a>
@@ -587,7 +581,7 @@
 
 > 这也使得'只是用材质实例'这个原则得以执行的比较容易。如果所有的美术人员都只是用材质实例，那么所有的原始材质都应该保存在这个目录中。你可以通过搜索所有不在`MaterialLibrary`中的基础材质来验证这一点。
 
-`MaterialLibrary`这个目录并不是仅能保存材质资源，一些共用的工具纹理、材质函数以及其他具有类似属性的资源都应该放在这个目录或子目录中。例如，噪声纹理应该保存在`MaterialLibrary/Utility`目录中。
+`MaterialLibrary`这个目录并不是仅能保存材质资源，一些共用的工具纹理、材质函数以及其他具有类似属性的资源都应该放在这个目录或子目录中。例如，噪点贴图应该保存在`MaterialLibrary/Utility`目录中。
 
 任何用来测试或调试的材质应该保存在`MaterialLibrary/Debug`中，这样当工程正式发布时，可以很容易把这些材质从删除，因为这些材质如果不删除，可能在最终产品中非常扎眼。
 
@@ -614,7 +608,7 @@ Remember: Blueprinting badly bears blunders, beware! (Phrase by [KorkuVeren](htt
 <a name="bp-compiling"></a>
 ### 3.1 编译 ![#](https://img.shields.io/badge/lint-supported-green.svg)
 
-需要保证所有蓝图在编译时0警告和0错误。你应该尽快修复所有警告和异常，以免它们造成可怕的麻烦。
+需要保证所有蓝图在编译时0警告和0错误。应该尽快修复所有警告和异常，以免它们造成可怕的麻烦。
 
 *绝对不要*提交那些断开的蓝图，如果你需要通过源码服务器保存，那么必须暂时搁置它们
 
@@ -656,9 +650,9 @@ Remember: Blueprinting badly bears blunders, beware! (Phrase by [KorkuVeren](htt
 
 <a name="3.2.1.2"></a>
 <a name="bp-var-naming-case"></a>
-##### 3.2.1.2 PascalCase ![#](https://img.shields.io/badge/lint-supported-green.svg)
+##### 3.2.1.2 大驼峰命名法(PascalCase) ![#](https://img.shields.io/badge/lint-supported-green.svg)
 
-所有非布尔类型的变量的大小写需要遵守[PascalCase](#terms-cases)规则。
+所有非布尔类型的变量的大小写需要遵守[大驼峰命名法(PascalCase)](#terms-cases)规则。
 
 <a name="3.2.1.2e"></a>
 ###### 3.2.1.2e 范例:
@@ -674,7 +668,7 @@ Remember: Blueprinting badly bears blunders, beware! (Phrase by [KorkuVeren](htt
 <a name="bp-var-bool-prefix"></a>
 ##### 3.2.1.3 布尔变量需要前缀 `b`  ![#](https://img.shields.io/badge/lint-supported-green.svg)
 
-所有布尔类型变量需要遵守[PascalCase](#terms-cases)规则，但前面需要增加小写的`b`做前缀。
+所有布尔类型变量需要遵守[大驼峰命名法(PascalCase)](#terms-cases)规则，但前面需要增加小写的`b`做前缀。
 
 例如: 用 `bDead` 和 `bEvil`, **不要** 使用`Dead` 和 `Evil`.
 
@@ -691,7 +685,7 @@ UE4的蓝图编辑器在显示变量名称时，会自动把前缀`b`去掉
 
 例如：使用`bDead` and `bHostile`，**不要**使用`bIsDead` and `bIsHostile`。
 
-也不要使用类似于`bRunning`这样的动词，动词会让含义变得复杂。
+也不要使用类似于`bRunning`这样的动词，动词会让含义变得复杂
 
 <a name="3.2.1.4.2"></a>
 ###### 3.2.1.4.2 复杂状态 ![#](https://img.shields.io/badge/lint-unsupported-red.svg)
@@ -739,7 +733,7 @@ UE4的蓝图编辑器在显示变量名称时，会自动把前缀`b`去掉
 
 所谓原生变量是指那些最简单的保存数据的变量类型，比如布尔类型、整数、浮点数以及枚举。
 
-String和vectors在蓝图中也属于原生变量类型，但严格来讲它们其实不是。
+字符串(String)和数组(vectors)在蓝图中也属于原生变量类型，但严格来讲它们其实不是。
 
 > 由三个浮点数组成的vector经常被视为一个整体数据类型，比如旋转向量。
 
@@ -757,7 +751,7 @@ String和vectors在蓝图中也属于原生变量类型，但严格来讲它们�
 <a name="bp-vars-naming-complex"></a>
 ##### 3.2.1.7 非原生类型的变量，需要包含变量类型名 ![#](https://img.shields.io/badge/lint-unsupported-red.svg)
 
-非原生类型的变量是指那些通过数据结构保存一批原生类型的复杂变量类型，比如Structs、Classes、Interface，还有一些有类似行为的原生变量比如`Text` 和 `Name`也属于此列。
+非原生类型的变量是指那些通过数据结构保存一批原生类型的复杂变量类型，比如结构体(Structs)、类(Classes)、接口(Interface)，还有一些有类似行为的原生变量比如`文字(Text)` 和 `名字(Name)`也属于此列。
 
 > 如果仅仅是原生变量组成的数组，那么这个数组仍然属于原生类型
 
@@ -868,27 +862,25 @@ Transient类型的变量是指那些不需要被序列化（保存或者加载�
 <a name="bp-vars-savegame"></a>
 #### 3.2.7 SaveGame变量 ![#](https://img.shields.io/badge/lint-supported-green.svg)
 
-只有从`SaveGame`继承的子类中的成员变量才能够使用SaveGame属性，并且确保该变量应该被保存时才把这个属性设置上
-
 绝对**不要**将`SaveGame` 和 `Transient`同时使用，这是明显不合理的。
 
 <a name="3.2.8"></a>
 <a name="bp-vars-config"></a>
 #### 3.2.8 Config变量 ![#](https://img.shields.io/badge/lint-supported-green.svg)
 
-不要使用`Config Variable`这个标记，这会让设计师在控制蓝图行为上更加困难。这个标记一般用在C++中，用来标记那些极少被改变的变量，你可以认为它们是那些被标上`Advanced Advanced Display`的变量
+不要使用`Config Variable`这个标记，这会让设计师在控制蓝图行为上更加困难。这个标记一般用在C++中，用来标记那些极少被改变的变量，你可以认为它们是那些被标上`Advanced Display`的变量
 
 <a name="3.3"></a>
 <a name="bp-functions"></a>
-### 3.3 函数、事件以及事件派发器 ![#](https://img.shields.io/badge/lint-unsupported-red.svg)
+### 3.3 函数、事件以及事件分发器 ![#](https://img.shields.io/badge/lint-unsupported-red.svg)
 
-这一节用来解释应该如何管理函数、事件以及事件派发器。除非特殊说明，所有适用于函数的规则，同样适用于事件。
+这一节用来解释应该如何管理函数、事件以及事件分发器。除非特殊说明，所有适用于函数的规则，同样适用于事件。
 
 <a name="3.3.1"></a>
 <a name="bp-funcs-naming"></a>
 #### 3.3.1 函数命名
 
-对于函数、事件以及事件派发器的命名极其重要，仅仅从一个名字本身，就有很多条件要考虑，比如说：
+对于函数、事件以及事件分发器的命名极其重要，仅仅从一个名字本身，就有很多条件要考虑，比如说：
 
 * 是纯虚函数吗？?
 * 是状态查询函数吗?
@@ -931,7 +923,7 @@ Transient类型的变量是指那些不需要被序列化（保存或者加载�
 <a name="bp-funcs-naming-onrep"></a>
 #### 3.3.1.2 属性的状态变化响应函数应该命名为`OnRep_Variable`
 
-所有用来响应状态变化的函数应该用`OnRep_Variable`的形式，这是由蓝图编辑器强制规定的，如果你在C++中写`OnRep`函数，应该同样遵守这个规则。
+所有用来响应状态变化的函数应该用`OnRep_Variable`的形式，这是由蓝图编辑器强制规定的，如果在C++中写`OnRep`函数，应该同样遵守这个规则。
 
 <a name="3.3.1.3"></a>
 <a name="bp-funcs-naming-bool"></a>
@@ -967,8 +959,6 @@ Transient类型的变量是指那些不需要被序列化（保存或者加载�
 事件的响应函数和派发函数都应该以`On`开头，然后遵守[动词规则](#bp-funcs-naming-verbs)，如果是过去式，那么动词应该移到最后以方便阅读
 
 在遵守动词规则的时候，需要优先考虑英语中的[固定句式](http://dictionary.cambridge.org/us/grammar/british-grammar/about-words-clauses-and-sentences/collocation) 
-
-有一些系统用`Handle`来表示事件响应，但在'Unreal'用的是`On`而不是`Handle`，
 
 好的例子:
 
@@ -1011,9 +1001,9 @@ Transient类型的变量是指那些不需要被序列化（保存或者加载�
 
 <a name="3.3.2"></a>
 <a name="bp-funcs-return"></a>
-#### 3.3.2 所有函数都应该有返回节点
+#### 3.3.2 所有函数内部都应该在结束的地方有返回节点
 
-所有函数都应该有返回节点，没有例外。
+所有函数内部都应该在结束的地方有返回节点，没有例外。
 
 返回节点明确标注了蓝图到此执行完毕。蓝图中的结构有可能有并行结构`Sequence`、循环结构`ForLoopWithBreak`或者逆向的回流节点组成，明确结束节点使蓝图易于阅读维护和调试。
 
@@ -1025,16 +1015,6 @@ Transient类型的变量是指那些不需要被序列化（保存或者加载�
 <a name="bp-graphs-funcs-node-limit"></a>
 #### 3.3.3 蓝图函数中节点数不应该超过50个
 简单来说，蓝图函数中的节点数应该小于50个，如果函数过于复杂，应该把它分割成几个小一点的函数，以便更好的阅读和维护。
-在蓝图中添加以下节点不用计算个数，因为它们并不会增加蓝图的复杂度：
-
-* Comment - 注释
-* Route - 路由节点
-* Cast - 类型转换节点
-* Getting a Variable - 获取变量
-* Breaking a Struct - 结构分解节点
-* Function Entry - 函数入口
-* Self - 自身节点
-
 
 <a name="3.4"></a>
 <a name="bp-graphs"></a>
@@ -1045,9 +1025,9 @@ This section covers things that apply to all Blueprint graphs.
 
 <a name="3.4.1"></a>
 <a name="bp-graphs-spaghetti"></a>
-#### 3.4.1 不要画‘意面’
-
-蓝图中所有连线都应该有清晰的开始点和结束点。你的蓝图不应该让阅读者在一堆乱糟糟的线中翻来翻去。以下内容是帮助你避免‘意大利面’样式的蓝图产生。
+#### 3.4.1 不要在蓝图上画画!!!
+蓝图中所有连线都应该有清晰的开始点和结束点。你的蓝图让阅读者在一堆乱糟糟的线中翻来翻去。
+以下内容帮助你避免龙飞凤舞蓝图产生。
 
 <a name="3.4.2"></a>
 <a name="bp-graphs-align-wires"></a>
@@ -1059,29 +1039,16 @@ This section covers things that apply to all Blueprint graphs.
 ![Aligned By Wires](https://github.com/allar/ue4-style-guide/raw/master/images/bp-graphs-align-wires-good.png "Aligned By Wires")
 
 不好的例子: 右上角节点的执行线歪了
-![Bad](https://github.com/allar/ue4-style-guide/raw/master/images/bp-graphs-align-wires-bad.png "Wiggly")
+![Bad](/images/bp-graphs-align-wires-bad.png "Wiggly")
 
 可接受的例子: 有些节点无论你怎么用对齐工具都无法对齐，这种情况下，就尽量缩短它们之间连线的长度。
-![Acceptable](https://github.com/allar/ue4-style-guide/raw/master/images/bp-graphs-align-wires-acceptable.png "Acceptable")
+![Acceptable](/images/bp-graphs-align-wires-acceptable.png "Acceptable")
 
 <a name="3.4.3"></a>
 <a name="bp-graphs-exec-first-class"></a>
 #### 3.4.3 白色的可执行线优先级最高
 
 如果发现白色执行线和其他数据线无法同时对齐，白色执行线的优先级更高。
-
-## 贡献者
-
-* [Michael Allar](http://allarsblog.com): [GitHub](https://github.com/Allar), [Twitter](https://twitter.com/michaelallar)
-* [CosmoMyzrailGorynych](https://github.com/CosmoMyzrailGorynych)
-* [billymcguffin](https://github.com/billymcguffin)
-* [akenatsu](https://github.com/akenatsu)
-
-## 版权
-
-Copyright (c) 2016 Gamemakin LLC
-
-查看版权协议 [LICENSE](/LICENSE)
 
 **[⬆ 回到最顶端](#toc)**
 
